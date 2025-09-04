@@ -1,0 +1,10 @@
+[theme]
+primaryColor = "orange"
+backgroundColor = "whiteSmoke"
+secondaryBackgroundColor = "white"
+textColor = "dimgray"
+font = "sans serif"
+
+[server]
+headless = true
+port = 8501

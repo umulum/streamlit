@@ -16,7 +16,7 @@ def askGpt(question):
 
 # STT
 def STT(audio_value):
-    client = openai.OpenAI(api_key=OPENAI_API)
+    client = openai.OpenAI(api_key=API_KEY)
     transcript = client.audio.transcriptions.create(
         model="whisper-1",
         file=audio_value,
@@ -26,7 +26,7 @@ def STT(audio_value):
 
 # TTS
 def TTS(response):
-    client = openai.OpenAI(api_key=OPENAI_API)
+    client = openai.OpenAI(api_key=API_KEY)
     # TTS를 활용하여 만든 음성을 파일로 저장
     with client.audio.speech.with_streaming_response.create(
         model="tts-1",

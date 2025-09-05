@@ -9,9 +9,10 @@ from konlpy.tag import Komoran
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 
+print("Set env")
 if "JAVA_HOME" not in os.environ:
     os.environ["JAVA_HOME"] = "/usr/lib/jvm/java-17-openjdk-amd64"
-    
+print("End setting env")
 # 앱 전체 페이지 타이틀, 레이아웃 설정
 st.set_page_config(page_title="Steam 감성 분석", layout="wide")
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -21,6 +22,7 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 def load_assets():
     """모델, 토크나이저, 데이터셋을 로드하고 캐싱합니다."""
     try:
+        print("load model & tokenizer")
         model_path = os.path.join(BASE_DIR, "sentiment_model.h5")
         tokenizer_path = os.path.join(BASE_DIR, "tokenizer.pickle")
 

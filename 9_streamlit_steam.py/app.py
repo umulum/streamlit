@@ -9,6 +9,9 @@ from konlpy.tag import Komoran
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 
+if "JAVA_HOME" not in os.environ:
+    os.environ["JAVA_HOME"] = "/usr/lib/jvm/java-17-openjdk-amd64"
+    
 # 앱 전체 페이지 타이틀, 레이아웃 설정
 st.set_page_config(page_title="Steam 감성 분석", layout="wide")
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))

@@ -56,7 +56,7 @@ streamlit==1.49.1
 - `st.pyplot`: Matplotlib 및 Seaborn으로 만든 정적인 그래프를 Streamlit 앱에 표시   
 - `st.plotly_chart`: Plotly로 만든 동적인 대화형 차트 생성  
 
-## 2_streamlit_mbti.py (웹사이트 제작 실습) 
+## 2_streamlit_mbti.py (웹사이트 제작 실습) [🔗](https://simple-mbti-test.streamlit.app/)
 이 파일은 Streamlit을 활용하여 간단한 MBTI 성격 테스트 웹 애플리케이션을 만드는 예제입니다.  
 사용자 상호작용과 세션 상태 관리를 통해 동적인 테스트 기능을 구현합니다.
 
@@ -143,4 +143,4 @@ OpenAI의 Whisper API를 활용한 음성 인식(STT)과 TTS API를 활용한 �
 - 음성 합성(TTS): 챗봇의 텍스트 답변을 음성 파일로 변환, OpenAI의 TTS 모델로 음성을 생성하고, 이를 자동 재생하도록 설정하여 자연스러운 대화 흐름 제공
 - 대화 기록 관리: `st.session_state`를 사용하여 사용자와 챗봇의 음성 및 텍스트 대화 기록 유지
 
-
+## 9_streamlit_stream (스팀 리뷰 감성 분석) [🔗](https://steam-sentiment-analysis.streamlit.app/)

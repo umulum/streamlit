@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 import urllib.request
 import re
+import os 
 import pickle
 from konlpy.tag import Komoran
 from tensorflow.keras.models import load_model
@@ -10,23 +11,29 @@ from tensorflow.keras.preprocessing.sequence import pad_sequences
 
 # 앱 전체 페이지 타이틀, 레이아웃 설정
 st.set_page_config(page_title="Steam 감성 분석", layout="wide")
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 # --- 캐싱: 모델, 토크나이저, 데이터셋 로드 (최초 1회만 실행) ---
 @st.cache_resource
 def load_assets():
     """모델, 토크나이저, 데이터셋을 로드하고 캐싱합니다."""
     try:
-        model = load_model("sentiment_model.h5")
-        with open("tokenizer.pickle", "rb") as handle:
+        model_path = os.path.join(BASE_DIR, "sentiment_model.h5")
+        tokenizer_path = os.path.join(BASE_DIR, "tokenizer.pickle")
+
+        model = load_model(model_path)
+        with open(tokenizer_path, "rb") as handle:
             tokenizer = pickle.load(handle)
 
         # Steam 리뷰 데이터 다운로드 및 로드
         try:
+            file_path = os.path.join(BASE_DIR, "steam.txt")
+
             urllib.request.urlretrieve(
                 "https://raw.githubusercontent.com/bab2min/corpus/master/sentiment/steam.txt",
-                filename="steam.txt",
+                filename=file_path,
             )
-            data = pd.read_table("steam.txt", names=["label", "reviews"])
+            data = pd.read_table(file_path, names=["label", "reviews"])
             data.drop_duplicates(subset=["reviews"], inplace=True)
             data["reviews"].replace("", np.nan, inplace=True)
             data = data.dropna(how="any")

@@ -1,18 +1,21 @@
-import streamlit as st
-import pandas as pd
-import numpy as np
-import urllib.request
-import re
 import os 
-import pickle
-from konlpy.tag import Komoran
-from tensorflow.keras.models import load_model
-from tensorflow.keras.preprocessing.sequence import pad_sequences
 
 print("Set env")
 if "JAVA_HOME" not in os.environ:
     os.environ["JAVA_HOME"] = "/usr/lib/jvm/java-17-openjdk-amd64"
 print("End setting env")
+
+import streamlit as st
+import pandas as pd
+import numpy as np
+import urllib.request
+import re
+import pickle
+from konlpy.tag import Komoran
+from tensorflow.keras.models import load_model
+from tensorflow.keras.preprocessing.sequence import pad_sequences
+
+
 # 앱 전체 페이지 타이틀, 레이아웃 설정
 st.set_page_config(page_title="Steam 감성 분석", layout="wide")
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
